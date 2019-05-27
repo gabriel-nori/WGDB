@@ -1,7 +1,9 @@
+USE wghotel;
 INSERT 
 	INTO 
-		STATUS(NOME)
+		status(nome)
 	VALUES
+		("ATIVO"),
 		("OK"),
 		("AGUARDANDO PAGAMENTO"),
 		("CANCELADO"),
@@ -18,7 +20,7 @@ INSERT
 
 INSERT
 	INTO
-		PROFISSAO(NOME)
+		profissao(nome)
 	VALUES
 		("MÉDICO"),
 		("PROFESSOR"),
@@ -29,7 +31,7 @@ INSERT
 
 INSERT
 	INTO
-		SEXO(NOME)
+		sexo(nome)
 	VALUES
 		("MASCULINO"),
 		("FEMININO"),
@@ -39,7 +41,7 @@ INSERT
 
 INSERT
 	INTO
-		PESSOA_TIPO(NOME)
+		pessoa_tipo(nome)
 	VALUES
 		("CLIENTE"),
 		("FUNCIONÁRIO CLT"),
@@ -50,7 +52,7 @@ INSERT
 
 INSERT
 	INTO
-		ORIGEM(NOME)
+		origem(nome)
 	VALUES
 		("BAR"),
 		("RESTAURANTE"),
@@ -60,6 +62,37 @@ INSERT
 
 INSERT
 	INTO
-		DOCUMENTO_TIPO(NOME, DUPLICIDADE, VALIDADE, EXPEDITOR, EXPEDICAO)
+		documento_tipo(nome, duplicidade, validade, expeditor, expedicao)
 	VALUES
 		("CPF", 0, 0, 0, 0);
+
+INSERT
+	INTO
+		pessoa(nome, prenome, sobrenome, nascimento, sexo_id, status_id, profissao_id, criacao)
+	VALUES
+		("FRANCISCO", "JOSE DA SILVA", "GUIMARÃES", "1978-08-08", 1, 1, 2, NOW());
+
+INSERT
+	INTO
+		pessoa_documento(nome, numero, documento_tipo_id, pessoa_id)
+	VALUES
+		("FRANCISCO JOSÉ DA SILVA GUIMARÃES", "40712345678", 1, 1);
+INSERT
+	INTO
+		cliente(pessoa_id)
+	VALUES
+		(1);
+INSERT
+	INTO
+		email_tipo(nome)
+	VALUES
+		("PESSOAL"),
+		("TRABALHO"),
+		("EMERGÊNCIA"),
+		("SPAM");
+
+INSERT
+	INTO
+		pessoa_email(email, email_tipo_id, pessoa_id)
+	VALUES
+		("JOSE.GUIMARAES@MEUDOMINIO.COM.BR", 1, 1);
